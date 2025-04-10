@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"log"
 
-	internal "github.com/fhva29/GoCommerce/internal/product"
+	"github.com/fhva29/GoCommerce/internal/product"
 	"gorm.io/driver/postgres"
 	"gorm.io/gorm"
 )
@@ -21,7 +21,7 @@ func ConnectDB() {
 	}
 
 	fmt.Println("Connected to database!")
-	err = connection.AutoMigrate(&internal.Product{})
+	err = connection.AutoMigrate(&product.Product{})
 	if err != nil {
 		log.Fatal(err)
 	}
