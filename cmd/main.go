@@ -1,10 +1,18 @@
 package main
 
 import (
+	"log"
+
+	"github.com/fhva29/GoCommerce/config"
 	"github.com/gin-gonic/gin"
+	"github.com/joho/godotenv"
 )
 
 func main() {
+	if err := godotenv.Load(); err != nil {
+		log.Fatal("Error loading .env file")
+	}
+
 	r := gin.Default()
 
 	r.GET("/health", func(ctx *gin.Context) {
@@ -13,5 +21,6 @@ func main() {
 		})
 	})
 
-	r.Run(":8080")
+	port := config.GetEnv("APP_PORT")
+	r.Run(":" + port)
 }
