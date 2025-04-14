@@ -16,4 +16,5 @@ func RegisterProductRoutes(r *gin.Engine, db *gorm.DB) {
 	handler := product.NewHandler(service)
 
 	r.GET("/products", handler.GetAll)
+	r.POST("/products", handler.Create)
 }
